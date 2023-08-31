@@ -23,7 +23,7 @@
 		font-size: 18px;
 		background-color: white;
 		padding: 10px;
-		width: 100vw;
+		width: 98vw;
 	}
 
 	.my-feeds {

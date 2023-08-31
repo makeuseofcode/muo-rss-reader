@@ -1,4 +1,5 @@
 <script>
+	import moment from 'moment';
 	export let data; 
 </script>
 {#if data.image}
@@ -13,7 +14,13 @@
 	{#each data.items as item}
 		{@const number = data.items.indexOf(item)}
 		<div class="item">
-			{number + 1}. <a href={item.link}> {item.title}</a>
+			{number + 1}. 
+			<a href={item.link}> {@html item.title}</a>
+			<div class="metadata">
+				<span>{item.author || item.creator || ""}</span>
+				<span>{moment(item.isoDate).fromNow()}</span>
+			</div>
+			<div class="snippet">{item.contentSnippet || ""}</div>
 		</div>
 	{/each}
 {:else}
@@ -21,8 +28,11 @@
 {/if}
 
 <style>
+	.snippet {
+		font-size: 18px;
+	}
 	a {
-		font-size: 30px;
+		font-size: 25px;
 		text-decoration: underline;
 		color: black;
 
@@ -36,7 +46,15 @@
 	}
 
 	.item {
+		display: flex;
+		flex-direction: column;
 		padding: 10px 10px;
+	}
+
+	.metadata{
+		display: flex;
+		gap:10px;
+		margin: 10px 0px 10px 0px;
 	}
 
     img{
