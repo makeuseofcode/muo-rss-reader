@@ -9,7 +9,6 @@
 <main let:dataUpdate={feeds}>
     <h1>RSS Reader</h1>
     <h3>Add a new feed:</h3>
-    <!-- <span>Welcome to this fine reader.</span> -->
     <input
         type="url"
         placeholder="Enter a valid RSS link..."
@@ -25,7 +24,6 @@
         }}
     />
 </main>
-<!-- <button type="submit" on:click={() => (ready = true)}>Check Availability</button> -->
 
 {#if ready}
 	{#await fetch(`/?url=${url}`).then((res) => res.json())}
